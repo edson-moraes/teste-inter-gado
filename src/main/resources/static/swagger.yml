@@ -1,0 +1,285 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: "Aplicação Teste - InterGado"
+  contact:
+    email: "edson-moraes@outlook.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+  - name: "Animal"
+    description: "Crud Animais"
+  - name: "Fazenda"
+    description: "Crud Fazenda"
+schemes:
+  - "http"
+paths:
+  /animal/bulk:
+    post:
+      tags:
+        - "Animal"
+      summary: "Cria um conjunto de animais"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dados dos animal a serem criados"
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Animal"
+      responses:
+        "200":
+          description: "Animais criados com Sucesso"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Animal"
+        "500":
+          description: "Erro no servidor"
+  /animal:
+    get:
+      tags:
+        - "Animal"
+      summary: "Lista todos os animais"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Sucesso"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Animal"
+        "500":
+          description: "Erro no servidor"
+    post:
+      tags:
+        - "Animal"
+      summary: "Cria um novo animal"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dados do animal a ser criado"
+          required: true
+          schema:
+            $ref: "#/definitions/Animal"
+      responses:
+        "200":
+          description: "Animal criado com Sucesso"
+          schema:
+            $ref: "#/definitions/Animal"
+        "500":
+          description: "Erro no servidor"
+
+    put:
+      tags:
+        - "Animal"
+      summary: "Atualiza os dados do animal informado"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dados do animal a ser atualizado"
+          required: true
+          schema:
+            $ref: "#/definitions/Animal"
+      responses:
+        "200":
+          description: "Animal atualizado com Sucesso"
+          schema:
+            $ref: "#/definitions/Animal"
+        "500":
+          description: "Erro no servidor"
+  /animal/{id}:
+    get:
+      tags:
+        - "Animal"
+      summary: "Busca os dados de um animal pelo id"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Id do animal"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "Sucesso"
+          schema:
+            $ref: "#/definitions/Animal"
+        "404":
+          description: "Animal não encontrado"
+        "500":
+          description: "Erro no servidor"
+    delete:
+      tags:
+        - "Animal"
+      summary: "Deleta os dados de um animal pelo id"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Id do animal"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "204":
+          description: "Animal removido com sucesso"
+        "500":
+          description: "Erro no servidor"
+
+  /fazenda:
+    get:
+      tags:
+        - "Fazenda"
+      summary: "Lista todas as fazendas"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Sucesso"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Fazenda"
+        "500":
+          description: "Erro no servidor"
+    post:
+      tags:
+        - "Fazenda"
+      summary: "Cria uma nova fazenda"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dados da fazenda a ser criada"
+          required: true
+          schema:
+            $ref: "#/definitions/Fazenda"
+      responses:
+        "200":
+          description: "Fazenda criada com Sucesso"
+          schema:
+            $ref: "#/definitions/Fazenda"
+        "500":
+          description: "Erro no servidor"
+    put:
+      tags:
+        - "Fazenda"
+      summary: "Atualiza os dados da fazenda informada"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dados da fazenda a ser substituida"
+          required: true
+          schema:
+            $ref: "#/definitions/Fazenda"
+      responses:
+        "200":
+          description: "Fazenda atualizada com Sucesso"
+          schema:
+            $ref: "#/definitions/Fazenda"
+        "500":
+          description: "Erro no servidor"
+  /fazenda/{id}:
+    get:
+      tags:
+        - "Fazenda"
+      summary: "Busca os dados de uma fazenda pelo id"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Id da Fazenda"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "Sucesso"
+          schema:
+            $ref: "#/definitions/Fazenda"
+        "404":
+          description: "Fazenda não encontrada"
+        "500":
+          description: "Erro no servidor"
+    delete:
+      tags:
+        - "Fazenda"
+      summary: "Deleta os dados de uma fazenda pelo id"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "Id da Fazenda"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "204":
+          description: "Fazenda removida com sucesso"
+        "500":
+          description: "Erro no servidor"
+
+definitions:
+  Animal:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      tag:
+        type: "string"
+      fazenda:
+        type: "integer"
+        format: "int64"
+  Fazenda:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      animals:
+        type: "array"
+        items:
+          $ref: "#/definitions/Animal"

@@ -1,0 +1,11 @@
+<testsuite failures="1" name="src/test/java/br/com/intergado/projetobasico/controllers/AnimalController.feature" skipped="0" tests="1" time="0.236525">
+  <testcase classname="src.test.java.br.com.intergado.projetobasico.controllers.AnimalController" name="Get animal should return 404 for invalid id" time="0.236525">
+    <failure message="AnimalController.feature:6 - status code was: 200, expected: 404, response time: 27, url: http://localhost:8080/animal/8, response: {&quot;id&quot;:8,&quot;tag&quot;:&quot;TAG-0999&quot;,&quot;fazenda&quot;:2}">Given url 'http://localhost:8080/animal/8' ................................ passed
+When method GET ........................................................... passed
+Then status 404 ........................................................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: AnimalController.feature:6 - status code was: 200, expected: 404, response time: 27, url: http://localhost:8080/animal/8, response: {"id":8,"tag":"TAG-0999","fazenda":2}&#13;
+	at ✽.Then status 404 (AnimalController.feature:6)</failure>
+  </testcase>
+</testsuite>
